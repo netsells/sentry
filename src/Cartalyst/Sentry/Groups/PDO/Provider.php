@@ -1,4 +1,4 @@
-<?php namespace Cartalyst\Sentry\Groups\Native;
+<?php namespace Cartalyst\Sentry\Groups\PDO;
 /**
  * Part of the Sentry Package.
  *
@@ -103,7 +103,7 @@ class Provider implements ProviderInterface {
 
 		// Returning with something
 		if (!empty($attributes)) {
-			$newModel = new \Cartalyst\Sentry\Groups\Native\Group($this->pdo, $attributes);
+			$newModel = new Group($this->pdo, $attributes);
 
 			return $newModel;
 		} else {
@@ -134,7 +134,7 @@ class Provider implements ProviderInterface {
 
 		// Returning with something
 		if (!empty($attributes)) {
-			$newGroup = new \Cartalyst\Sentry\Groups\Native\Group($this->pdo, $attributes);
+			$newGroup = new Group($this->pdo, $attributes);
 
 			return $newGroup;
 		} else {
@@ -153,7 +153,7 @@ class Provider implements ProviderInterface {
 	public function create(array $attributes)
 	{
 
-		$newGroup = new \Cartalyst\Sentry\Groups\Native\Group($this->pdo, $attributes);
+		$newGroup = new Group($this->pdo, $attributes);
 
 		if (!$newGroup->save()) {
 			throw new Exception("Error while creating new group!");

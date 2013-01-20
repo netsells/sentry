@@ -1,4 +1,4 @@
-<?php namespace Cartalyst\Sentry\Groups\Native;
+<?php namespace Cartalyst\Sentry\Groups\PDO;
 /**
  * Part of the Sentry Package.
  *
