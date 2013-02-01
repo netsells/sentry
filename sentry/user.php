@@ -307,7 +307,8 @@ class Sentry_User implements \Iterator, \ArrayAccess
 		$new_user = array(
 			$this->login_column => $user[$this->login_column],
 			'password' => $this->hash->create_password($user['password']),
-			'created_at' => $this->sql_timestamp(),
+            'created_at' => $this->sql_timestamp(),
+			'updated_at' => $this->sql_timestamp(),
 			'activated' => (bool) ($activation) ? false : true,
 			'status' => 1,
 		) + $user;
@@ -326,7 +327,9 @@ class Sentry_User implements \Iterator, \ArrayAccess
 		if (array_key_exists('permissions', $new_user))
 		{
 			$new_user['permissions'] = json_encode($new_user['permissions']);
-		}
+		} else {
+            $new_user['permissions'] = '{}';
+        }
 
 		// set activation hash if activation = true
 		if ($activation)
